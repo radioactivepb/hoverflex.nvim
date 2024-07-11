@@ -22,9 +22,7 @@ M._dynamic_update = function()
 		return
 	end
 
-	-- TODO: Figure this out
-	-- local hover_name = vim.fn.expand("<cword>")
-
+	local hover_name = vim.fn.expand("<cword>")
 	local bufnr = vim.api.nvim_get_current_buf()
 	local cursor_pos = vim.api.nvim_win_get_cursor(0)
 	local line_count = vim.api.nvim_buf_line_count(bufnr)
@@ -33,8 +31,6 @@ M._dynamic_update = function()
 		return
 	end
 
-	-- TODO: Figure this out so we can have dynamic title changing based on the word under the cursor
-	-- vim.api.nvim_buf_set_name(M._dynamic_bufnr, hover_name)
 
 	vim.lsp.buf_request(0, "textDocument/hover", vim.lsp.util.make_position_params(), function(err, result)
 		if err or not result or not result.contents then
@@ -42,6 +38,7 @@ M._dynamic_update = function()
 		end
 		local lines = vim.lsp.util.convert_input_to_markdown_lines(result.contents)
 		vim.api.nvim_set_option_value("modifiable", true, { buf = M._dynamic_bufnr })
+		vim.api.nvim_buf_set_name(M._dynamic_bufnr, hover_name)
 		vim.api.nvim_buf_set_var(M._dynamic_bufnr, "hoverflex.nvim", true)
 		vim.api.nvim_buf_set_lines(M._dynamic_bufnr, 0, -1, false, lines)
 		vim.api.nvim_set_option_value("modifiable", false, { buf = M._dynamic_bufnr })
