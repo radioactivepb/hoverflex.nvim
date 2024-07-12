@@ -97,7 +97,10 @@ M.setup = function(opts)
 	local keymap_opts = { noremap = true, silent = true }
 
 	for f, keybind in pairs(opts.keybinds) do
-		vim.keymap.set(mode, keybind, M[tostring(f)], keymap_opts)
+		local func = M[tostring(f)]
+		if func ~= nil then
+			vim.keymap.set(mode, keybind, func, keymap_opts)
+		end
 	end
 end
 
