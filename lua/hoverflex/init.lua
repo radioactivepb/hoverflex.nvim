@@ -93,13 +93,10 @@ M.setup = function(opts)
 
 	opts = vim.tbl_deep_extend("force", default_opts, opts)
 
-	local mode = "n"
-	local keymap_opts = { noremap = true, silent = true }
-
 	for f, keybind in pairs(opts.keybinds) do
 		local func = M[tostring(f)]
 		if func ~= nil then
-			vim.keymap.set(mode, keybind, func, keymap_opts)
+			vim.keymap.set("n", keybind, func, { noremap = true, silent = true, desc = "HoverFlex: " .. f })
 		end
 	end
 end
