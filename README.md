@@ -5,6 +5,8 @@ Open hover docs in a new buffer, tab, or split so you can refer back to them qui
 
 Dynamic splits allow you to open a split that will follow the documentation under your cursor!
 
+- [Disclaimer](#disclaimer)
+
 - [Features](#features)
  
 - [Installation](#installation)
@@ -12,6 +14,11 @@ Dynamic splits allow you to open a split that will follow the documentation unde
 - [Options](#options)
 
 - [Functions](#functions)
+
+## Disclaimer
+If you have issues, don't hesitate to report them.
+
+However, I mainly make these plugins strictly for personal use.
 
 ## Features
 - **Multiple views for hover docs**
