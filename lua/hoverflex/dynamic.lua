@@ -31,7 +31,6 @@ M._dynamic_update = function()
 		return
 	end
 
-
 	vim.lsp.buf_request(0, "textDocument/hover", vim.lsp.util.make_position_params(), function(err, result)
 		if err or not result or not result.contents then
 			return
@@ -71,7 +70,6 @@ M._dynamic_create = function(hover_type, stay_focused)
 	vim.api.nvim_buf_set_name(M._dynamic_bufnr, hover_name)
 	vim.api.nvim_set_option_value("modifiable", false, { buf = M._dynamic_bufnr })
 	vim.api.nvim_set_option_value("filetype", "markdown", { buf = M._dynamic_bufnr })
-	vim.api.nvim_set_option_value("bufhidden", "wipe", { buf = M._dynamic_bufnr })
 	vim.api.nvim_buf_set_var(M._dynamic_bufnr, "hoverflex.nvim", true)
 	vim.api.nvim_buf_set_var(M._dynamic_bufnr, "hoverflex.dynamic", true)
 
