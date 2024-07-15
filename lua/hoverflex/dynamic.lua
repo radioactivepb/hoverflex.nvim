@@ -69,6 +69,7 @@ M._dynamic_create = function(hover_type, stay_focused)
 
 	vim.api.nvim_buf_set_name(M._dynamic_bufnr, hover_name)
 	vim.api.nvim_set_option_value("modifiable", false, { buf = M._dynamic_bufnr })
+	vim.api.nvim_set_option_value("buflisted", true, { buf = M._dynamic_bufnr })
 	vim.api.nvim_set_option_value("filetype", "markdown", { buf = M._dynamic_bufnr })
 	vim.api.nvim_buf_set_var(M._dynamic_bufnr, "hoverflex.nvim", true)
 	vim.api.nvim_buf_set_var(M._dynamic_bufnr, "hoverflex.dynamic", true)
