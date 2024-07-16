@@ -93,6 +93,20 @@ M.setup = function(opts)
 
 	opts = vim.tbl_deep_extend("force", default_opts, opts)
 
+	if opts.keybinds == default_opts.keybinds then
+		if package.loaded["which-key"] then
+			if require("which-key").add then
+				require("which-key").add({
+					mode = { "n" },
+					{ "<leader>h", group = "Hoverflex" },
+					{ "<leader>h_", hidden = true },
+					{ "<leader>hd", group = "Hoverflex Dyanmic" },
+					{ "<leader>hd_", hidden = true },
+				})
+			end
+		end
+	end
+
 	for f, keybind in pairs(opts.keybinds) do
 		local func = M[tostring(f)]
 		if func ~= nil then

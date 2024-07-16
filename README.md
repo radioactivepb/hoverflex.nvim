@@ -52,6 +52,8 @@ Many options are available for easy keybindings
 ```lua
 {
     "radioactivepb/hoverflex.nvim",
+    -- Optional event, LspAttach works great
+    event = "LspAttach",
     -- All displayed options are the defaults
     opts = {
         -- By default, any keybinds you do not pass to opts.keybinds will be instantiated
